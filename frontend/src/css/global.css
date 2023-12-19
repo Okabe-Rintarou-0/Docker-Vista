@@ -1,0 +1,45 @@
+.header {
+    background-color: white !important;
+    padding: 0;
+}
+
+.navbar {
+    align-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 50px;
+}
+
+svg {
+    vertical-align: baseline;
+}
+
+.footer {
+    text-align: center;
+}
+
+.basic-layout {
+    min-height: 100vh !important;
+}
+
+.container-card {
+    font-size: 1.2em;
+}
+
+.container-card table {
+    border-spacing: 30px 0px;
+}
+
+.basic-layout .content {
+    padding: 0 50px;
+    align-content: center;
+    width: 100%;
+}
+
+
+.merged-container {
+    background-color: rgb(234, 231, 231);
+    text-align: center;
+    padding: 0 20px 20px 20px;
+    border-radius: 10px;
+}
