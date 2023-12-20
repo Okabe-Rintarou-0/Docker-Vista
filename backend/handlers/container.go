@@ -8,6 +8,20 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+func HandleGetTopography(ctx *gin.Context) {
+	var (
+		topography *models.TopoGraphy
+		err        error
+	)
+
+	topography, err = utils.GetTopography()
+	if err != nil {
+		ctx.Status(http.StatusBadRequest)
+	} else {
+		ctx.JSON(http.StatusOK, topography)
+	}
+}
+
 func HandleGetContainerInfo(ctx *gin.Context) {
 	var (
 		containerId string

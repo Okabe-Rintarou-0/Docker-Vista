@@ -15,6 +15,7 @@ func main() {
 		Use(cors.New(corsCfg)).
 		GET("/containers/:id/info", handlers.HandleGetContainerInfo).
 		GET("/containers/info", handlers.HandleGetAllContainerInfo).
+		GET("/containers/topography", handlers.HandleGetTopography).
 		GET("/layers/dir", handlers.HandleGetDirEntries)
 	engine.Run()
 }

@@ -36,10 +36,14 @@ svg {
     width: 100%;
 }
 
-
 .merged-container {
     background-color: rgb(234, 231, 231);
     text-align: center;
     padding: 0 20px 20px 20px;
     border-radius: 10px;
+}
+
+.topo-container {
+    height: 100vh;
+    width: '100%';
 }

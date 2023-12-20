@@ -2,6 +2,7 @@ package utils
 
 import (
 	"context"
+	"fmt"
 	"strings"
 	"time"
 	"vista/models"
@@ -50,6 +51,45 @@ func GetContainerInfo(containerId string) (*models.ContainerInfo, error) {
 	}
 
 	return &ret, nil
+}
+
+func GetUUID(path string) string {
+	parts := strings.Split(path, "/")
+	return parts[len(parts)-2]
+}
+
+func GetTopography() (*models.TopoGraphy, error) {
+	var (
+		nodes []models.Node
+		edges []models.Edge
+	)
+	containers, err := cli.ContainerList(ctx, types.ContainerListOptions{})
+	if err != nil {
+		return nil, err
+	}
+
+	for _, container := range containers {
+		info, err := GetContainerInfo(container.ID)
+		if err != nil {
+			return nil, err
+		}
+		rootId := fmt.Sprintf("%s(%s)", info.Name, info.ID)
+		nodes = append(nodes, models.Node{ID: rootId, IsRoot: true})
+		lastId := rootId
+		for _, lowerDir := range info.LowerDirs {
+			layerId := GetUUID(lowerDir)
+			nodes = append(nodes, models.Node{ID: layerId, IsRoot: false})
+			edges = append(edges, models.Edge{
+				Src: lastId,
+				Tgt: layerId,
+			})
+			lastId = layerId
+		}
+	}
+	return &models.TopoGraphy{
+		Nodes: nodes,
+		Edges: edges,
+	}, nil
 }
 
 func GetAllContainerInfo() ([]*models.ContainerInfo, error) {

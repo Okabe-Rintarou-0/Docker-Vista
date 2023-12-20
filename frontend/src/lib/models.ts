@@ -11,3 +11,18 @@ export interface FileEntry {
     size: number
     isDir: boolean
 }
+
+export interface Edge {
+    src: string
+    tgt: string
+}
+
+export interface Node {
+    id: string
+    isRoot: boolean
+}
+
+export interface Topography {
+    nodes: Node[]
+    edges: Edge[]
+}
