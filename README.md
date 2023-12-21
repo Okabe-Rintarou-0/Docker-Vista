@@ -13,7 +13,7 @@ Docker container is based on Overlayfs, which is consisted of one upper director
 # How To Run It
 
 ```shell
-sudo docker run -itd -p 3000:3000 -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/overlay2:/var/lib/docker/overlay2 --name vista 923048992/docker-vista
+sudo docker run -itd -p 3000:3000 -p 8080:8080 -v /var/run/docker.sock:/var/run/docker.sock -v /var/lib/docker/overlay2:/var/lib/docker/overlay2 --name vista 923048992/docker-vista
 ```
 
 Then start the browser at http://localhost:3000.
