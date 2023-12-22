@@ -11,8 +11,7 @@ const CardNode = ({ cfg }: any) => {
         <Group draggable>
             <Rect
                 style={{
-                    display: "flex",
-                    width: 500,
+                    width: 450,
                     height: 'auto',
                     fill: '#fff',
                     stroke: '#ddd',
@@ -34,8 +33,10 @@ const CardNode = ({ cfg }: any) => {
                 >
                     {isRoot ? 'Container' : 'Layer'}
                 </Text>
-                <Text style={{ fill: '#ccc', fontSize: "12px", margin: [12, 24] }}>
-                    {id}
+                <Text style={{
+                    fill: '#ccc', fontSize: "12px", margin: [12, 24]
+                }}>
+                    {id.length > 75 ? id.slice(0, 75) + '...' : id}
                 </Text>
             </Rect>
         </Group>
